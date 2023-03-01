@@ -37,8 +37,8 @@ let showDetails = (data) => {
         <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body" id ="pic">
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -67,10 +67,13 @@ let onClick = (idmeal) => {
         let staticBackdropLabel = document.getElementById(
           "staticBackdropLabel"
         );
-
+ let pic = document.getElementById("pic");
         for(let i of result){
-            // console.log(i.idMeal)
+            console.log(i.strMealThumb);
             staticBackdropLabel.innerText = `Id -  ${i.idMeal}`;
+            pic.innerHTML = `
+            <img class="img-fluid" src = '${i.strMealThumb}'>
+            `;
         }
     }
     
