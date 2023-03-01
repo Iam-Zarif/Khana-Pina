@@ -8,10 +8,28 @@ let team = (item) => {
 }
 let showDetails = (data) => {
     let mainDiv = document.getElementById("mainDiv");
-    mainDiv.innerHTML ='';
-    data = data.slice(0, 9);
+    let showMore = document.getElementById("showMore");
+    mainDiv.innerText ="";
+    
+    
+    if (data.length > 10) {
+      data = data.slice(0, 10);
+      showMore.style.display = "block";
+    } else {
+      showMore.style.display = "none";
+    }
+
+
+    if (data.length === 0) {
+      let noMoreProducts = document.getElementById("noMoreProducts");
+      noMoreProducts.style.display = "block";
+    } else {
+      let noMoreProducts = document.getElementById("noMoreProducts");
+      noMoreProducts.style.display = "none";
+    }
+    
     for(let i of data){
-        console.log(i);
+        // console.log(i);
         let newDiv = document.createElement('div');
         newDiv.classList.add('col');
         newDiv.innerHTML = `
