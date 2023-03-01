@@ -10,7 +10,7 @@ let showDetails = (data) => {
     let mainDiv = document.getElementById("mainDiv");
     mainDiv.innerHTML ='';
     for(let i of data){
-        // console.log(i.idMeal);
+        console.log(i);
         let newDiv = document.createElement('div');
         newDiv.classList.add('col');
         newDiv.innerHTML = `
@@ -34,11 +34,28 @@ let showDetails = (data) => {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+        <h1 class="modal-title fs-5 text-bg-warning p-2 rounded-3" id="staticBackdropLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id ="pic">
         
+      </div>
+      <h3 class="text-center text-info-emphasis text-bg-warning py-2">Ingredients</h3>
+      <div class = "d-flex justify-content-evenly">
+      <div>
+      <p class="fw-bold">${i.strIngredient1}</p>
+      <p class="fw-bold">${i.strIngredient2}</p>
+      <p class="fw-bold">${i.strIngredient3}</p>
+      <p class="fw-bold">${i.strIngredient4}</p>
+      <p class="fw-bold">${i.strIngredient5}</p>
+      </div>
+      <div>
+      <p class="fw-bold">${i.strIngredient6}</p>
+      <p class="fw-bold">${i.strIngredient7}</p>
+      <p class="fw-bold">${i.strIngredient8}</p>
+      <p class="fw-bold">${i.strIngredient9}</p>
+      <p class="fw-bold">${i.strIngredient10}</p>
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -69,7 +86,7 @@ let onClick = (idmeal) => {
         );
  let pic = document.getElementById("pic");
         for(let i of result){
-            console.log(i.strMealThumb);
+            console.log(i);
             staticBackdropLabel.innerText = `Id -  ${i.idMeal}`;
             pic.innerHTML = `
             <img class="img-fluid" src = '${i.strMealThumb}'>
