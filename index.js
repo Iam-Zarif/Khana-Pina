@@ -10,7 +10,7 @@ let showDetails = (data) => {
     let mainDiv = document.getElementById("mainDiv");
     mainDiv.innerHTML ='';
     for(let i of data){
-        // console.log(i.strMeasure3);
+        // console.log(i.idMeal);
         let newDiv = document.createElement('div');
         newDiv.classList.add('col');
         newDiv.innerHTML = `
@@ -21,7 +21,7 @@ let showDetails = (data) => {
         <h2 class="card-title text-white">${i.strMeal}</h2>
         <p class="card-text text-white">${i.strMeasure3}</p>
       </div>
-      <button onclick="onClick()" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <button onclick="onClick('${i.idMeal}')" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Details
 </button>
     </div>
@@ -29,7 +29,25 @@ let showDetails = (data) => {
   </div>
 
   <section>
-  
+  <section id="pop" class="container">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
   </section>
   
         `;
@@ -38,9 +56,23 @@ let showDetails = (data) => {
 }
 
 
-let onClick = () => {
-    console.log("ji");
+let onClick = (idmeal) => {
+    let url1 = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idmeal}`;
+    // console.log(idmeal);
+    fetch(url1)
+      .then((res) => res.json())
+      .then((data1) => details(data1.meals));
     
+    let details = (result) => {
+        let staticBackdropLabel = document.getElementById(
+          "staticBackdropLabel"
+        );
+
+        for(let i of result){
+            // console.log(i.idMeal)
+            staticBackdropLabel.innerText = `Id -  ${i.idMeal}`;
+        }
+    }
     
 
 }
@@ -48,7 +80,7 @@ let onClick = () => {
 
 let search =() =>{
     let input = document.getElementById("inp-1").value;
-    console.log(input);
+    // console.log(input);
     team(input);
 
 };
