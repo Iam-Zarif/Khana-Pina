@@ -9,6 +9,7 @@ let team = (item) => {
 let showDetails = (data) => {
     let mainDiv = document.getElementById("mainDiv");
     mainDiv.innerHTML ='';
+    data = data.slice(0, 9);
     for(let i of data){
         console.log(i);
         let newDiv = document.createElement('div');
@@ -21,7 +22,7 @@ let showDetails = (data) => {
         <h2 class="card-title text-white">${i.strMeal}</h2>
         <p class="card-text text-white">${i.strMeasure3}</p>
       </div>
-      <button onclick="onClick('${i.idMeal}')" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <button onclick="onClick('${i.idMeal}')" type="button" class="btn btn-warning fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Details
 </button>
     </div>
@@ -59,7 +60,7 @@ let showDetails = (data) => {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        
       </div>
     </div>
   </div>
